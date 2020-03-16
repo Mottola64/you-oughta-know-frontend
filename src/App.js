@@ -1,19 +1,16 @@
 import React from 'react';
+import {connect} from 'react-redux';
+import TopicsContainer from './containers/TopicsContainer'
 
 class App extends React.Component {
-  componentDidMount() {
-    fetch('http://localhost:3000/api/v1/users/1')
-    .then(response => response.json())
-    .then(data => console.log(data))
-  }
   
   render(){
     return (
       <div className="App">
-        App
+        <TopicsContainer />
       </div>
     );
   }
 }
 
-export default App;
+export default connect()(App);
