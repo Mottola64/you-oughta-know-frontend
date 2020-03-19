@@ -1,10 +1,10 @@
 import React from 'react';
 import {connect} from 'react-redux';
-
+import {Route, Switch} from 'react-router-dom'
 import {fetchTopics} from '../actions/fetchTopics'
 import TopicInput from '../components/TopicInput'
 import Topics from '../components/Topics'
-
+import Topic from '../components/Topic'
 
 class TopicsContainer extends React.Component {
 
@@ -15,8 +15,11 @@ class TopicsContainer extends React.Component {
     render() {
         return(
             <div>
-                <TopicInput /><br></br>
-                <Topics topics={this.props.topics}/>
+                <Switch>
+                    <Route path='/topics/new' component={TopicInput}/>
+                    <Route path='/topics/:id' render={(routerProps) => <Topic {...routerProps} topics={this.props.topics}/>}/>
+                    <Route exact path='/topics' render={(routerProps) => <Topics {...routerProps} topics={this.props.topics}/>}/>
+                </Switch>
             </div>
         )
     }
