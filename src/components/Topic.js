@@ -2,10 +2,9 @@ import React from 'react'
 import CommentsContainer from '../containers/CommentsContainer'
 
 const Topic = (props) => {
-
-    console.log(props)
-    let topic = props.topics[props.match.params.id - 1]
-    // console.log(topic)
+    // eslint-disable-next-line
+    let topic = props.topics.find(topic => topic.id == props.match.params.id)
+   
     return (
         <div>
             <h2>
